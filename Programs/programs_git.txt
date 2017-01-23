@@ -1,0 +1,46 @@
+# ==================== Git {https://githowto.com/ru} ===========================
+
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+cd work folder              # перейти в папку проекта
+git init                    # инициализировать папку(проект) один раз
+git clone                   # клониковать репозиторий с помощью http
+git add .                   # добавить все файлы для commit(фиксации)
+git status                  # проверить статус файлов
+git commit -m "new copy"    # записать версию файлов
+git push                    # загрузить на сервер
+
+git push origin master залить проект на сервер в ветку master
+
+git branch -a                   # показать все ветки
+git branch work                 # создать ветку work
+git branch -b work              # создать ветку work и сделать ее активной
+git checkout work               # сделать ветку work активной *
+git push origin work            # отправить ветку work в удалённый репозиторий
+git merge work                  # слить ветку work с master *
+git branch -d work              # удалить ветку work из лок-ого репозитория
+git push origin --delete work   # удалить ветку work из удалённого репозитория
+git push origin                 # сделать push, так как локальные изменения 
+                                    # в masterе мы на сервер ещё не отправляли
+
+git log --pretty=oneline Однострочная история
+
+git log --pretty=oneline --max-count=2
+git log --pretty=oneline --since='5 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author=< your name >
+git log --pretty=oneline --all
+
+git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+
+--pretty="..." — определяет формат вывода.
+%h — укороченный хэш коммита
+%d — дополнения коммита («головы» веток или теги)
+%ad — дата коммита
+%s — комментарий
+%an — имя автора
+--graph — отображает дерево коммитов в виде ASCII-графика
+--date=short — сохраняет формат даты коротким и симпатичным
+
+# =============== start 2016 ============== end 23-01-2017 =====================
