@@ -187,6 +187,7 @@ grep -r "str" /home             # найти подстроку
 
 type                            # тип команды
 whereis bash                    # найти местоположение испол-ого файла команды
+locate bash                     # найти местоположение испол-ого файла команды
 whatis                          # вывод краткого описания команды
 alias foo='cd /home; ls; cd -'  # создать alias
 unalias foo                     # удалить alias
