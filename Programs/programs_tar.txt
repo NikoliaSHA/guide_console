@@ -1,0 +1,21 @@
+# =============================== archive ======================================
+
+tar
+    -c                          # создать
+    -x                          # распаковать
+    -t                          # вывести содержимое
+    -xvzf                       # для *.tar.gz
+    -xvjf                       # для *.tar.bz2
+    -xpJf                       # для *.tar.xz
+
+tar -cvf archive.tar file dir   # сбор всех файлов и дерикторий в tar
+tar -xvf archive.tar /tmp       # извлечение из tar
+tar -czvf *.tar.gz dir          # создать архив gzip
+
+gzip | gunzip
+bzip2 | bunzip2
+xz | unxz
+zip -r                          # создать zip-архив cо вложенными файломи
+unzip file.zip -d /tmp          # разархивировать zip-архив в указаную папку
+
+# =================== start 2016 ============== end 2017 =======================
