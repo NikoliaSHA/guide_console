@@ -1,0 +1,69 @@
+# ================= https://www.archlinux.org/download/ ========================
+
+# dd status=progress bs=4M if=disk.iso of=/dev/sdc && sync - create boot flash
+
+# ============================== start install =================================
+! dhcpcd - start dhcp network adapter
+wifi-menu - start wireless adapter
+ping 8.8.8.8 - check network
+lsblk - view partition
+cfdisk /dev/sda create partition table dos << disk 1000_Gb << gpt 
+! mkfs.ext4 /dev/sda1 - format partitions
+! mkswap /dev/sda2 && swapon /dev/sda2
+mount /dev/sda1 /mnt/
+! mkdir -p /mnt/home/{disk1,disk2}
+mount /dev/sda3 /mnt/home
+up top string in file /etc/pacman.d/mirrorlist 
+----------------------------
+    ## Russia
+    Server = http://mirror.yandex.ru/archlinux/$repo/os/$arch 
+----------------------------
+pacstrap /mnt base base-devel - install base packets
+genfstab -U -p /mnt >> /mnt/etc/fstab - generate fstab
+cat /mnt/etc/fstab - check fstab & edit fstab
+----------------------------
+    UUID=336c5201-7363-45c5-8e98 swap swap defaults 0 0
+----------------------------
+! arch-chroot /mnt -  cd dir new system
+! echo namehost > /etc/hostname
+! ln -sf /usr/share/zoneinfo/Asia/Yekaterinburg /etc/localtime - change timezone
+! hwclock --systohc --utc
+! nano /etc/locale.gen - uncomment line en_US.UTF-8 ru_RU.UTF-8
+! locale-gen
+! echo LANG=en_US.UTF-8 > /etc/locale.conf
+! export LANG=en_US.UTF-8 
+! modprobe asus-atk0110 - for notebook asus
+mkinitcpio -p linux - config core
+passwd - create pass root
+pacman -S sudo bash-completion - install sudo
+mkdir /home/username
+useradd -d /home/username -g groups -s /bin/bash username
+----------------------------
+  -m(create home dir) -d(change home dir) -s(change shell) -G(add user in group)
+----------------------------
+passwd username
+EDITOR=nano visudo - add string
+----------------------------
+    username ALL=(ALL) ALL
+    uncomment %wheel ALL=(ALL) ALL - for meny users
+----------------------------
+pacman -S grub os-prober(for meny OS) fuse mtools()
+grub-install /dev/sda | --target=i386-pc --recheck /dev/sda 
+! grub-mkconfig -o /boot/grub/grub.cfg
+ip addr - show name network adapter
+systemctl enable dhcpcd@eth0.service - for boot dhcp
+pacman -S dialog wpa_supplicant - for wi-fi boot
+----------------------------
+    installation completed
+----------------------------
+exit
+umount -R /mnt
+reboot
+
+# ============================ GUI =============================================
+
+pacman -S xorg-server xorg-drivers xfce4 xfce4-goodies lxdm 
+gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs opera
+systemctl enable lxdm
+
+# ============================= end 12-03-2017 =================================
