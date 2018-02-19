@@ -1,0 +1,32 @@
+python3.6 -m venv name          # создать окружение
+. ./nameENV/bin/activate         # активировать
+deactivate
+
+pip freeze                      # что установлено в env 
+
+pip install --upgrade lxml      # обновить модуль
+
+–relocatable                    # сделать папку переместимой
+
+ключ --upgrade               # Если обновился python 
+
+
+sudo pip3 install virtualenv virtualenvwrapper
+В ~/.bashrc дописываем:
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/bin/virtualenvwrapper.sh
+
+mkvirtualenv env-name           # Создаем новое окружение:
+workon                          # Смотрим список окружений:
+workon env-name                 # Меняем окружение:
+deactivate                      # Выходим из окружения:
+rmvirtualenv env-name           # Удаляем окружение:
+
+Находясь в одном из окружений, можно ставить пакеты через pip, как обычно:
+pip3 install flask
+Список зависимостей проекта, насколько я смог разобраться, принято сохранять в файл с именем requirements.txt:
+pip3 freeze > requirements.txt
+Этот подход позволяет одной командой установить все зависимости, необходимые проекту:
+pip3 install -r requirements.txt
+
+# ========================== start 11-05-2017 ==================================

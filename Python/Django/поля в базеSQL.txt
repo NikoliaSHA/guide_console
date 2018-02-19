@@ -1,0 +1,103 @@
+AutoField                       # Автоинкрементное поле 
+IntegerField                    # Используется для хранения ID
+BigIntegerField                 # позволяет хранить числа от -9237.. до 9237..
+BinaryField                     # Поля для хранения бинарных данных
+BooleanField                    # Поле хранящее значение true/false.
+CharField                       # Строковое поле для хранения строк
+    class CharField(max_length=None, **options)
+    .max_length        # Максимальная длинна в символах
+
+CommaSeparatedIntegerField      # Поле, содержащее целые числа разделенные ,,,
+    class CommaSeparatedIntegerField(max_length=None, **options)
+
+DateField                       # Дата, datetime.date
+    class DateField(auto_now=False, auto_now_add=False, **options)
+    .auto_now          # Значение поля будет автоматически установлено 
+                                  в текущую дату при каждом сохранении объекта.
+    .auto_now_add      # Зн-ние поля будет авто-ки установлено в т-щую 
+                                  дату при создании(первом сох-нии) объекта.
+
+DateTimeField                   # Дата и время, datetime.datetime
+    class DateTimeField(auto_now=False, auto_now_add=False, **options)
+
+DecimalField                    # Десятичное число с фик-ной точностью, Decimal
+    class DecimalField(max_digits=None, decimal_places=None, **options)
+    .max_digits     # Максимальное количество цифр в числе
+    .decimal_places # Количество знаков после запятой.
+
+DurationField                   # Поля для хранения периодов времени, timedelta
+EmailField                      # Поле CharField для хранения правильного email 
+                                Использует EmailValidator для проверки
+    class EmailField(max_length=254, **options)
+
+FileField                       # Поле для загрузки файла
+    class FileField(upload_to=None, max_length=100, **options)
+    .upload_to         # Этот атрибут позволяет указать каталог и наз-
+                                  вание файла при его сохранении
+
+FilePathField                   # Поле значение которого ограничено именем файла
+    class FilePathField(path=None, match=None, recursive=False, max_length=100, **options)
+    .path          # Обязательно. Абсолютный путь к каталогу
+    .match         # Регулярное выражение, к-ое использует как фильтр названий
+    .recursive     # Принимает True или False. По-умолчанию False 
+                                  Определяет, должны ли быть вкл. подкаталоги path
+    .allow_files   # Принимает True или False. По-умолчанию True. 
+                                  Определяет, должны ли быть включены указанные 
+                                  подкаталоги
+    .allow_folders # Принимает True или False. По-умолчанию False. 
+                                  Определяет, должны ли быть включены указанные 
+                                  подкаталоги
+
+FloatField                      # Число с плавающей точкой, float
+
+ImageField                      # Наследует все от FileField, но проверяет я-ся 
+                                  ли загруженный файл изображением
+    class ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, **options)
+    .height_field     # Имя поля, которому авто-ки будет присвоено 
+                                  зн-ие высоты изо-ия при к-ом сох-ии объекта
+    .width_field      # Имя поля, которому авто-ки будет присвоено 
+                                  зн-ие ширины изо-ия при к-ом сох-ии объекта
+
+IntegerField                    # Число. Значение от -2147483648 до 2147483647
+GenericIPAddressField           # Адрес IPv4 или IPv6 в виде строки, TextInput
+    class GenericIPAddressField(protocol='both', unpack_ipv4=False, **options)
+    .protocol                   # Определяет формат IP адреса. Принимает зна-
+                                  чение 'both', (по умолчанию)
+    .unpack_ipv4                # Преобразует адрес IPv4. Если эта опция установ
+                                  лена, адрес ::ffff::192.0.2.1 будет преобразо-
+                                  ван в 192.0.2.1. По-умолчанию отключена. 
+
+NullBooleanField                # Как и BooleanField, но принимает значение NULL
+                                  Используете его вместо BooleanField с null=True,
+                                  NullBooleanSelect.
+
+PositiveIntegerField            # Как и поле IntegerField, но значение должно быть больше или равно нулю (0). Можно использовать значение от 0 до 2147483647. Значение 0 принимается для обратной совместимости.
+
+PositiveSmallIntegerField       # Как и поле PositiveIntegerField, но принимает 
+                                  значения в определенном диапазоне(зависит от 
+                                  типа базы данных). Для баз данных поддерживае-
+                                  мых Django можно использовать значения от 0 до 32767.
+
+SlugField                       # Slug – газетный термин. “Slug” – это короткое 
+                                  название-метка, которое содержит только буквы, 
+                                  числа, подчеркивание или дефис. используются в URL.
+    class SlugField(max_length=50, **options)
+
+SmallIntegerField               # Как и поле IntegerField, но принимает значения 
+                                  в определенном диапазоне(зависит от типа базы 
+                                  данных). Для баз данных поддерживаемых Django 
+                                  можно использовать значения от -32768 до 32767
+
+TextField                       # Большое текстовое поле, Textarea.
+
+TimeField                       # Время, представленное объектом datetime.time 
+                                 Принимает те же аргументы, что и DateField.
+    class TimeField(auto_now=False, auto_now_add=False, **options)
+
+URLField                        # Поле CharField для URL, TextInput.
+    class URLField(max_length=200, **options)
+    .max_length                 # Если вы не укажите max_length, будет использо-
+                                  вано значение – 200
+
+UUIDField                       # Поля для сохранения UUID
+

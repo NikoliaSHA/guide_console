@@ -1,0 +1,20 @@
+# ======================== install pip =================================
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+# python get-pip.py
+
+# ======================== install django =================================
+
+# python pip install Django==1.11.4
+
+pacman -S python-django
+
+1. django-admin startproject myproject
+
+2. python manage.py runserver
+
+3. python manage.py makemigrations # создание и синхронизация бд
+
+4. python manage.py migrate     # синхронизация бд
+
+5. manage.py createsuperuser    # создание супер админа (nik : py213253)
