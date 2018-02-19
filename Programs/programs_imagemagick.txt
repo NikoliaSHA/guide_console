@@ -1,0 +1,10 @@
+install imagemagick
+
+
+convert                         # утилита, которая конвертирует jpg в pdf.
+
+$ convert input.jpg output.pdf
+
+convert -page                   # задает размер страницы
+convert -size 800x600           # задать размер изображения
+convert -resize 50%             # Изменить размер изображения

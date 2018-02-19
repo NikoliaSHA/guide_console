@@ -1,0 +1,26 @@
+# ======================== find filed & dirs ===================================
+
+find                            # пойск файлов
+    $ find / -name "filename"   # найти файлы filename в директории /
+    $ find / -name "name" -type d -exec rm -rv {} \; # найти и удалить dir
+    $ find . -mtime -1          # найти файлы измененые менее 1 день назад
+        -name                   # пойск по имени
+        -type d f               # пойск по типу
+        -size -100k +1M +1G     # пойск по размеру
+        -mtime day              # измененые 1 день
+
+    $ find /etc -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r
+2012-09-14 22:25:14.0000000000 /etc/shadow
+
+$ find /target_directory -type f -mmin -60 последние 60 минут
+$ find /target_directory -type f -mtime -2 в последние 2 дня
+$ find /target_directory -type f -mtime -2 -depth -3 в последние 2 дня в дир и ее 
+                                            поддиректориях глубиной до 3 уровня
+
+$ find /target_directory -type f -mtime -7 ! -mtime -3  в последние 7 дней, но не позднее чем 3 дня назад:
+
+$ find /target_directory -type f -mmin -60 -exec ls -al {} \; 
+В качестве альтернативы вы можете использовать для этого команду xargs:
+$ find /target_directory -type f -mmin -60 | xargs ls -l
+
+# =================== start 2016 ============== end 2017 =======================

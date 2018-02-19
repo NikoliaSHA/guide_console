@@ -1,0 +1,15 @@
+# =========================== wacom ============================================
+
+xsetwacom --list devices
+
+xsetwacom --list parameters
+
+xsetwacom --get "Wacom BambooPT 2FG 4x5 Pad pad" button 4
+
+xsetwacom --set "Wacom BambooPT 2FG 4x5 Finger touch" touch off
+
+xsetwacom --set 12 MapToOutput "VGA-0"
+
+xsetwacom --set "Wacom BambooPT 2FG 4x5 Pad pad" Button 4 "key +shift h -shift e l l o"
+
+# ========================== end 12-05-2017 ====================================

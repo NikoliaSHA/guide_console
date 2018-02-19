@@ -1,0 +1,21 @@
+# ==================== ffmpeg ==================================================
+
+# вырезать фрагмент из видео
+вариант 1
+ffmpeg -ss 0:02:05 -t 2:20:20 -i in.avi -vcodec copy -acodec copy out.avi
+-t начало |-i конец фрагмента
+вариант 2
+ffmpeg -ss 0:02:05 -t 2:20:20 -i in.avi -sameq out.avi
+
+ffmpeg -i video.mp4 -vn \
+       -acodec libmp3lame -ac 2 -ab 160k -ar 48000 \
+        audio.mp3
+
+ffmpeg -i mount_point/video_ts/vts_05_3.vob -map 0:3 -f mp3 file_3.mp3
+
+AAC to MP3
+ffmpeg -i <audio.aac> -acodec libmp3lame <audio.mp3>
+
+ffmpeg -i inputfile.m4a -c:a libmp3lame -ac 2 -b:a 190k outputfile.mp3
+
+# =================== start 2016 ============== end 2017 =======================

@@ -1,0 +1,63 @@
+# apt install vsftpd
+
+
+
+# addgroup ftpuser              # Cоздаём группу ftpuser
+# useradd -d /var/ftp -g ftpuser ftpuser 
+                                # Создаём поль-ля ftpuser, добаляем его в группу
+# passwd ftpuser
+# mkdir /var/ftp
+# chmod 555 /var/ftp
+# chown root:ftpuser /var/ftp
+
+Создаём публичный каталог.
+# mkdir /var/ftp/pub
+# chown ftpuser:ftpuser /var/ftp/pub
+
+
+listen_address=192.168.0.1      # По желанию, на каком интерфейсе слушать
+
+anonymous_enable=NO             # Выключение анонимного режима FTP.
+anon_upload_enable=NO
+anon_mkdir_write_enable=NO
+
+background=YES                  # Разрешаем работать в фоновом режиме.
+chroot_local_user=YES           # Запираем каждого юзера в свою клелку.
+passwd_chroot_enable=YES        # Каждый путь к клетке юзера, берется из домашних директорий с /etc/passwd. 
+
+
+#chroot_list_enable=YES         # Если "chroot_local_user=NO", тогда в файле /etc/ftp_chroot_list прописываем кого, куда чрутить.
+#chroot_list_file=/etc/ftp_chroot_list
+
+local_enable=YES                # Разрешаем локальным юзерам использовать FTP-сервер.
+ls_recurse_enable=YES           # Разрешить просматривать каталоги рекурсивно с опцией "-R" для ls.
+write_enable=YES                # Разрешаем или запрещаем юзерам записывать файлы
+listen=YES                      # Работать в автономном режиме?
+file_open_mode=0600             # Разрешения, с которыми создаются закачиваемые файлы.
+secure_chroot_dir=/var/empty    # Этот каталог должен быть пустым, так как он используется chroot() клеткой во время, когда vsftpd не запрашивает доступ к файловой системе.
+
+
+pasv_min_port=30000             # Указываем  диапазон портов для пассивного режима например (30000:50000). Так же не забываем потом их открыть у себя на фаерволе.
+pasv_max_port=50000
+local_max_rate=25600            # Максимально разрешенная скорость передачи данных (байт/c), для локальных пользователей.
+userlist_enable=YES             # Разрешить использование списка пользователей
+userlist_file=/etc/user_list    # Путь к файлу списка разрешенных или запрещенных пользователей.
+
+# Включаем userlist, указываем расположение файла, а так же действие.
+# "userlist_deny=NO" - Список будет белым. Запрещены все, кто явно не разрешены.
+# "userlist_deny=YES" - Список будет черным. Расрешены все, кто явно не запрещены. 
+userlist_deny=NO
+
+xferlog_enable=YES              # Разрешаем записывать в лог, кто чего делал
+xferlog_file=/var/log/vsftpd.log # Местоположение того самого лога
+connect_from_port_20=YES        # Разрешаем соединение по 20-м порту.
+async_abor_enable=YES           # Поддержка древних FTP клиентов.
+use_localtime=YES               # Используем родное время, а не GMT.
+max_per_ip=4                    # Ограничение на количество сесий с одного IP.
+local_umask=001                 # Что бы юзеры создавали файлы с правами - 775.
+
+ascii_download_enable=YES # Данные будут скачиваться и закачиваться в аски.
+ascii_upload_enable=YES
+
+ftpd_banner=Hello! This my FTP! # Приветствие при входе.
+force_dot_files=NO              # Разрешить просматривать файлы которые начинаются с точки (скрытые)

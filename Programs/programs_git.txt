@@ -3,13 +3,13 @@
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 
-cd work folder              # перейти в папку проекта
-git init                    # инициализировать папку(проект) один раз
-git clone                   # клониковать репозиторий с помощью http
-git add .                   # добавить все файлы для commit(фиксации)
-git status                  # проверить статус файлов
-git commit -m "new copy"    # записать версию файлов
-git push                    # загрузить на сервер
+cd work folder                  # перейти в папку проекта
+git init                        # инициализировать папку(проект) один раз
+git clone                       # клониковать репозиторий с помощью http
+git add .                       # добавить все файлы для commit(фиксации)
+git status                      # проверить статус файлов
+git commit -m "new copy"        # записать версию файлов
+git push                        # загрузить на сервер
 
 git push origin master залить проект на сервер в ветку master
 
@@ -22,7 +22,7 @@ git merge work                  # слить ветку work с master *
 git branch -d work              # удалить ветку work из лок-ого репозитория
 git push origin --delete work   # удалить ветку work из удалённого репозитория
 git push origin                 # сделать push, так как локальные изменения 
-                                    # в masterе мы на сервер ещё не отправляли
+                                # в masterе мы на сервер ещё не отправляли
 
 git log --pretty=oneline Однострочная история
 

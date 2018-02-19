@@ -1,0 +1,12 @@
+Создание ISO-образа из существующих файлов на жёстком диске
+
+$ genisoimage -V "folder" -J -r -o isoimage.iso ./path for iso
+
+
+Перед тем, как записать новую информацию на уже использованный CD-RW, необходимо стереть с него старую. Это можно выполнить командой
+$ wodim -v dev=/dev/sr0 blank=fast  # Стирание CD-RW и DVD-RW
+
+
+$ wodim -v -sao dev=/dev/sr0 isoimage.iso Прожиг ISO-образа на CD
+
+$ growisofs -dvd-compat -Z /dev/sr0=isoimage.iso Прожиг DVD или BD:

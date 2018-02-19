@@ -1,0 +1,17 @@
+
+
+
+
+
+#!/bin/bash
+#run the scanner and save the results to output.txt file
+sudo clamscan -r --bell --max-filesize=750M /mnt/seagate2tb/ > output.txt
+
+#count the lines that contains 'OK'
+OK_COUNT=`grep 'OK' output.txt | wc -l`
+
+#count the lines that contain 'FOUND'
+FOUND_COUNT=`grep 'FOUND' output.txt |wc -l`
+
+#now display them on a single line output
+echo "The number of OK: $OK_COUNT The number of FOUND: $FOUND_COUNT"

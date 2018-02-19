@@ -1,0 +1,3 @@
+pacman -Sy virt-manager
+pacman -Sy qemu-arch-extra
+systemctl start libvirtd.service

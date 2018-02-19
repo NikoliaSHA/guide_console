@@ -1,0 +1,5 @@
+
+restart pulseaudio
+
+killall pulseaudio
+pulseaudio --check

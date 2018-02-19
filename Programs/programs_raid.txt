@@ -1,0 +1,88 @@
+# ========================= raid array ==============================================
+
+install zfs-linux(AUR)
+
+install mdadm
+
+подготовка дисков
+таблица разделов GPT > 2G > MBR(dos)
+содание разделов (type fd Linux raid autodetect)
+диски нужно отформатировать 
+
+# mdadm --zero-superblock /dev/sdX  # подготовка уже бывшего в массиве диска
+
+создание массива RAID1 из двух дисков
+# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sdc1
+
+mdadm --create /dev/md0 --level=1 --raid-disks=2 missing /dev/sdb1
+
+cat /proc/mdstat && mdadm --detail /dev/md0
+mdadm --detail --scan >> /etc/mdadm/mdadm.conf
+mkfs.ext3 /dev/md0
+blkid узнать UUID
+fstab uuid /mount  ext3 defaults 1 2
+
+Пометка диска как сбойного, ключ --fail (-f):
+# mdadm /dev/md0 --fail /dev/hde1
+
+Удаление сбойного диска, ключ --remove (-r):
+# mdadm /dev/md0 --remove /dev/hde1
+
+Добавление нового диска, ключ --add (-a) и --re-add:
+# mdadm /dev/md0 --add /dev/hde1
+
+Сборка существующего массива с помощью mdadm --assemble. 
+# mdadm --assemble /dev/md0 /dev/hde1 /dev/hdf2 /dev/hdg1
+# mdadm --assemble --scan пересканировать устройства
+
+Расширение массива с помощью ключа --grow (-G). 
+Сначала добавляется диск, а потом массив расширяется:
+# mdadm /dev/md0 --add /dev/hdh2
+
+Проверяем, что диск (раздел) добавился:
+# mdadm --detail /dev/md0 && # cat /proc/mdstat
+
+Если раздел действительно добавился, мы можем расширить массив:
+# mdadm -G /dev/md0 --raid-devices=4 
+
+Удаление массива
+
+Для начала отмонтируйте и остановите массив:
+# umount /dev/md0 && # mdadm -S /dev/md0
+
+Затем необходимо затереть superblock каждого из составляющих массива:
+# mdadm --zero-superblock /dev/hde1
+если не было ошибки выполняем еще раз
+
+ # mdadm /dev/md0 --add /dev/hdh2 /dev/hdh3
+ # mdadm -G /dev/md0 --raid-devices=4
+
+$ cat /proc/mdstat                  # проверка после создания
+
+обновление файла конфигураций
+# echo 'DEVICE partitions'          # добавить в /etc/mdadm.conf
+# mdadm --detail --scan             # добавить в /etc/mdadm.conf
+
+после обновления конфигурационного файла соберите массив заново
+# mdadm --assemble --scan
+
+Расчет stride и stripe
+# mdadm --detail /dev/mdX | grep 'Chunk Size'
+
+stride = chunk size / block size
+stripe width = number of data disks * stride
+
+RAID0
+# mkfs.ext4 -v -L myarray -m 0.5 -b 4096 -E stride=16,stripe-width=32 /dev/md0
+
+
+remove raid array mdadm
+
+1.lsblk
+2.# mdadm --detail /dev/md0
+3.# mdadm --stop /dev/md0
+4.# umount /dev/md0
+5.# mdadm --zero-superblock /dev/sda # mdadm --zero-superblock /dev/sdX...
+6.# mdadm --remove /dev/md0
+
+# ======================= end 23-01-2017 =======================================
