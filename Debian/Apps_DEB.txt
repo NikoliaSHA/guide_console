@@ -1,0 +1,4 @@
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+
+deb http://http.debian.net/debian stretch main contrib
+aptitude install pepperflashplugin-nonfree browser-plugin-freshplayer-pepperflash

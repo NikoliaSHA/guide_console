@@ -1,0 +1,2 @@
+Можно разве что скрипт накостылять, который будет периодически скачивать пакет opera-ffmpeg-codecs-XXXXXX-x86_64.pkg.tar.xz отсюда https://repo.herecura.eu/herecura/x86_64 (это репозиторий Arch https://wiki.archlinux.org/index.php/unofficial_user_repositories#herecura)
+Извлекающий файл libffmpeg.so из него, и кладущий его в /usr/lib/x86_64-linux-gnu/opera/
