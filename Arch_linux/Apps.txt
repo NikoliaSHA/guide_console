@@ -1,0 +1,183 @@
+https://wiki.archlinux.org/index.php/List_of_applications
+Internet
+chromium thunderbird transmission-qt 
+opera 
+    for flash pepper-flash(AUR) 
+    for html5 opera-ffmpeg-codecs(AUR)
+default browser adding in  ~/.local/share/applications/mimeapps.list
+--------------------------------------
+    x-scheme-handler/http=opera-browser.desktop 
+--------------------------------------
+Multimedia
+audacious audacity mpg123 vlc gt4 openshot vidcutter(AUR) QtAV shotcut(AUR)
+
+Graphics
+shutter shotwell inkscape gimp xsane xsane-gimp 
+
+leafpad doublecmd-qt libunrar
+
+System
+hdparm gnome-disk-utility gnome-system-monitor ntfs-3g dosfstools
+
+# umount /dev/sda2
+# ntfsfix /dev/sda2
+
+ext4magic                       # Восстановление ext3 и ext4
+ntfsundelete                    # восстановления NTFS
+scrounge-ntfs                   # спасения данных с повреждённых разделов NTFS
+plank 
+compton для прозрачности
+pacman -S bleachbit очистка системы
+
+ install nvidia ----------------------------------------------------------------
+ nvidia-xconfig                                                                
+ в /etc/mkinitcpio.conf прописать MODULES=«nouveau»                             
+
+ добавить в /etc/X11/xorg.conf.d/20-nouveau.conf
+
+Section "Device"
+       Identifier "nvidia"
+       Driver "nouveau"
+       #Driver "nv"
+       #Driver "nvidia"
+EndSection
+--------------------------------------------------------------------------------
+
+Archivation
+unrar unzip zip p7zip xarchiver
+
+Office
+libreoffice-fresh-ru xmind evince fbless 
+calibre(https://calibre-ebook.com/download_linux)
+
+антивирус clamav
+sudo clamscan -i -r /home/* - скан
+freshclam                   - обновление
+Создайте отсутствующий sock-файл:
+# touch /var/lib/clamav/clamd.sock
+# chown clamav:clamav /var/lib/clamav/clamd.sock
+Затем в файле /etc/clamav/clamd.conf раскомментируйте стоку:
+    LocalSocket /var/lib/clamav/clamd.sock
+Сохраните файл и перезапустите службу clamd
+
+
+
+[Default Applications] ~/.local/share/applications/mimeapps.list
+ inode/directory=nautilus.desktop;
+
+--------------------------------------------------------------------------------
+0. install git wget
+1. git clone https://aur.archlinux.org/package-query.git
+2. cd package-query
+3. makepkg -si
+
+4. git clone https://aur.archlinux.org/yaourt.git
+5. cd yaourt
+6. makepkg -si
+
+--------------------------------------------------------------------------------
+
+yaourt font-manager
+yaourt ttf-ms-fonts(Arial Verdana) ttf-vista-fonts(Consolas)
+pacman ttf-liberation ttf-droid ttf-dejavu 
+yaourt mailru-cloud
+yaourt yandex-disk
+yaourt skype
+yaourt teamviewer   # teamviewer --daemon start 
+                    # systemctl start teamviewerd.service
+                    # systemctl enable teamviewerd.service
+
+yaourt pycharm-community (install jre8-openjdk-8)
+yaourt smartgit
+yaourt sublime-text
+yaourt k290-fnkeyctl
+yaourt mint-x-icons 
+yaourt r-studio
+
+pacman /var/cache/pacman/pkg/ /var/lib/pacman/
+-S   установка из репо
+-Sc  очистить кеш                 удаления из кэша всех не установленных пакетов
+-Scc полностью очистить каталог кэша
+-Sy  обновление репозитория
+-Syu обновление пакетов
+-Ss  поиск пакетов
+-Si  инфо о пакете
+-Qs  поиск в установленных пакетах
+-Rs  удаление
+-Sw  Скачать пакет, но не устанавливать
+-U   Установить локальный пакет или http не из репозиториев
+paccache -r удаляет из кэша пакеты, кроме трех недавно использовавшихся
+paccache -h справка
+
+утилиты удалять через -Rdd
+
+x64 в /etc/pacman.conf и раскомментируйте строки:
+-----------------------------------------
+    [multilib]
+    SigLevel = PackageRequired
+    Include = /etc/pacman.d/mirrorlist
+-----------------------------------------
+
+yaourt -Syu Обновить базу пакетов
+
+makepkg -si собрать пакет с зависиммостями
+
+
+virtualbox
+-S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso(/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso) linux-headers net-tools
+modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci
+Для автоматической загрузки модуля и создайте файл virtualbox.conf в каталоге /etc/modules-load.d/ 
+с записью:
+-----------------------------------------
+    /etc/modules-load.d/virtualbox.conf
+    vboxdrv
+    vboxnetadp
+------------------------------------------
+после обновления версии virtual box
+sudo pacman -S kernel-headers
+# /usr/bin/rcvboxdrv
+# vboxreload перезагрузка модулей
+
+# gpasswd -a $USER vboxusers
+переключение tty1 in guest OS - host-key F1
+сменить UUID VBoxManage internalcommands sethduuid <путь к диску>
+Host-only Networks
+# ip link show vboxnet0
+# ip link set vboxnet0 up
+# ip addr add 192.168.56.29/24 broadcast 192.168.56.255 dev vboxnet0
+
+
+printer
+hplip cups cups-filters ghostscript gsfonts cups-pdf system-config-printer 
+
+sudo systemctl start org.cups.cupsd.service
+sudo systemctl enable org.cups.cupsd.service
+
+
+
+scanner 3770.tar.gz https://yadi.sk/d/Dpra8feH3AUFYL
+установить sane xsane xsane-gimp libstdc++5 libusb-compat
+Содержимое распаковываем в соответствующие каталоги: /usr/lib/ и /usr/lib/sane
+В файл /etc/sane.d/dll.conf дописываем hp3770
+add users in group scanner
+
+swappiness
+cat /proc/sys/vm/swappiness
+# sysctl vm.swappiness=10 временно установить значение
+
+/etc/sysctl.d/99-sysctl.conf
+vm.swappiness=10
+
+
+hibernate 
+# nano /etc/mkinitcpio.conf - add resume
+----------------------
+  HOOKS="base udev resume autodetect modconf block filesystems keyboard fsck"
+----------------------
+# mkinitcpio -p linux
+
+/etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="resume=/dev/sda2 quiet"
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+# =================== start 2016 ============== end 2017 =======================

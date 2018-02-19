@@ -25,6 +25,11 @@ cat /mnt/etc/fstab - check fstab & edit fstab
     UUID=336c5201-7363-45c5-8e98 swap swap defaults 0 0
 ----------------------------
 ! arch-chroot /mnt -  cd dir new system
+for x64 system uncomment in file /etc/pacman.conf
+----------------------------
+    #[multilib]
+    #Include = /etc/pacman.d/mirrorlist
+----------------------------
 ! echo namehost > /etc/hostname
 ! ln -sf /usr/share/zoneinfo/Asia/Yekaterinburg /etc/localtime - change timezone
 ! hwclock --systohc --utc
@@ -62,8 +67,15 @@ reboot
 
 # ============================ GUI =============================================
 
-pacman -S xorg-server xorg-drivers xfce4 xfce4-goodies lxdm 
+pacman -S xorg-server  xorg-xinit xorg-server-utils mesa-libgl xterm 
+(x64)lib32-mesa-libgl
+lspci | grep VGA
+pacman -S xf86-video-intel (intel)
+pacman -S xf86-video-nouveau (nvidia)
+pacman -S xf86-video-ati (amd)
+pacman -S xf86-video-vesa (virtual)
+pacman -S xfce4 xfce4-goodies lxdm 
 gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs opera
 systemctl enable lxdm
 
-# ============================= end 12-03-2017 =================================
+# ============================= end 06-04-2017 =================================

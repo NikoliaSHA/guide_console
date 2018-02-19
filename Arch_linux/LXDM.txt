@@ -1,0 +1,25 @@
+
+/etc/lxdm/lxdm.conf
+авто вход
+autologin=user
+
+numlock=1
+session=/usr/bin/startxfce
+    or
+session=/usr/bin/startlxde
+
+clock time fontcolor
+/home/nikolia/.config/lxpanel/LXDE/panels/panel
+Plugin {
+  type=dclock
+  Config {
+    ClockFmt=%R
+    TooltipFmt=%A %x
+    BoldFont=1
+    IconOnly=0
+    CenterText=0
+    fontcolor=#000000
+  }
+}
+
+# =================== start 2016 ============== end 2017 =======================

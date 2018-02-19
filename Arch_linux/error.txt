@@ -1,0 +1,33 @@
+Unit dbus-org.freedesktop.Avahi.service not found
+
+Failed to load plugin "tumbler-ffmpeg-thumbnailer.so": libffmpegthumbnailer.so.4
+Failed to load plugin "tumbler-raw-thumbnailer.so": libopenrawgnome.so.7
+Failed to load plugin "tumbler-odf-thumbnailer.so": libgsf-1.so.114
+tumblerd[512]: Failed to load plugin "tumbler-odf-thumbnailer.so
+pacman -S libopenraw libgsf ffmpegthumbnailer
+tumblerd[520]: Failed to load plugin "tumbler-raw-thumbnailer.so
+
+
+sudo chmod 000 /usr/share/gvfs/mounts/network.mount
+You then need to kill the related gvfs processes and restart Thunar.
+
+--------------------------------------------------------------------------------
+Jul 22 17:47:56 hostname dbus[556]: [system] Activating via systemd: service 
+name='org.freedesktop.Avahi' unit='dbus-org.freedesktop.Avahi.service'
+Jul 22 17:47:56 hostname dbus[556]: [system] Activation via systemd failed for 
+unit 'dbus-org.freedesktop.Avahi.service': 
+Unit dbus-org.freedesktop.Avahi.service not found.
+
+cd /usr/lib/systemd/system
+ln -s avahi-daemon.service dbus-org.freedesktop.Avahi.service
+--------------------------------------------------------------------------------
+pacman -S xorg-mkfontdir
+# mkdir /usr/share/fonts/Type1
+# mkfontdir /usr/share/fonts/Type1
+# mkfontdir /usr/share/fonts/75dpi/
+# mkfontdir /usr/share/fonts/100dpi/
+
+
+
+
+# =================== end 06-04-2017 ===========================================
