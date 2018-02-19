@@ -1,0 +1,20 @@
+
+journalctl -p -err              # записи с ошибками
+journalctl -f                   # последние 10 записей + новые
+journalctl --since=2016-12-20 --until=2016-12-21
+                                # записи только за нужную дату
+journalctl -b                   # логи, с  последней загрузки
+systemd-analize                 # сколько времени заняла последняя загрузка
+systemd-analyze blame           # детальный отчет последней загрузки
+journalctl -bu apparmor.service # последние логи, службы apparmor 
+systemctl list-units -t service # узнать, какие сервисы запущены
+systemctl disable cups          # убрать cups из автозагрузки
+systemctl enable cups           # добавить cups в автозагрузку
+systemctl stop cups             # Для остановки cups
+systemctl start cups            # для запуска cups
+systemctl status cups           # для проверки cups
+systemctl list-units -t service --failed 
+                                # сервисы были остановлены в аварийном реж.
+sudo systemctl is-enabled cups  # проверка вкл. cups в автозагрузку
+
+# =================== start 2016 ============== end 2017 =======================
