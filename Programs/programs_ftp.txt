@@ -1,7 +1,6 @@
 # apt install vsftpd
 
 
-
 # addgroup ftpuser              # Cоздаём группу ftpuser
 # useradd -d /var/ftp -g ftpuser ftpuser 
                                 # Создаём поль-ля ftpuser, добаляем его в группу

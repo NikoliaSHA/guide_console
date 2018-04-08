@@ -18,4 +18,8 @@ ffmpeg -i <audio.aac> -acodec libmp3lame <audio.mp3>
 
 ffmpeg -i inputfile.m4a -c:a libmp3lame -ac 2 -b:a 190k outputfile.mp3
 
+ffmpeg -i filename.mp4 filename.mp3
+
+ffmpeg -i video.mp4 -b:a 192K -vn music.mp3
+
 # =================== start 2016 ============== end 2017 =======================
