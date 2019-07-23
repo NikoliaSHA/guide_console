@@ -7,9 +7,30 @@
 wifi-menu - start wireless adapter
 ping 8.8.8.8 - check network
 lsblk - view partition
-cfdisk /dev/sda create partition table dos << disk 1000_Gb << gpt 
+cfdisk /dev/sda create partition table dos << disk 1000_Gb << gpt
+
+# ===================== UEFI ===================================================
+ls /sys/firmware/efi хорошо если не пустая
+efivar -l 						# Проверяем режим EFI
+efibootmgr						# загрузочные записи (если есть)
+efibootmgr -b x -B 				# Удаляем не нужные записи командой
+timedatectl set-ntp true 		# Синхронизация системных часов
+wifi-menu 						# Подключаем интернет
+cfdisk /dev/sda
+Для root new 20G  type system linux  подтверждаем write
+Для boot efi new 512M  type EFI  подтверждаем write
+Для swap new 4.8G  type linux swap  подтверждаем write
+Для home new 400G  type system linux  подтверждаем write
+
+gdisk /dev/sda
+o for MBR
+n for new partition for /boot 512Mb . hex code EF00 for EFI
+
+mkfs.vfat /dev/sda1 for /boot
+# ===================== UEFI =================================================== 
+
 ! mkfs.ext4 /dev/sda1 - format partitions
-! mkswap /dev/sda2 && swapon /dev/sda2
+! mkswap /dev/sdaX && swapon /dev/sdaX
 mount /dev/sda1 /mnt/
 ! mkdir -p /mnt/home/{disk1,disk2}
 mount /dev/sda3 /mnt/home
@@ -52,6 +73,31 @@ EDITOR=nano visudo - add string
     username ALL=(ALL) ALL
     uncomment %wheel ALL=(ALL) ALL - for meny users
 ----------------------------
+# ============ UEFI ============================================================
+
+pacman -S  efibootmgr 			# Устанавливаем дополнительные пакеты
+bootctl install 				# Запускаем менеджер загрузки
+vim /boot/loader/loader.conf   # Настраиваем менеджер загрузки
+------------------------------------------------
+		Закомментируем все строки, добавим свои
+		default arch                   
+		timeout 5
+		editor 1
+-------------------------------------------------
+pacman -S intel-ucode 			# Для пользователей процессоров Intel
+
+Создаем файлы конфигурации
+vim /boot/loader/entries/arch.conf
+-------------------------------------------------
+title Arch Linux
+linux /vmlinuz-linux
+# initrd  /intel-ucode.img      # раскомментировать для пользователей Intel
+initrd /initramfs-linux.img
+options root=/dev/sda1 rw 		# Здесь sda1 - это наш примонтированный root раздел
+--------------------------------------------------
+efibootmgr 						# Просмотрим последовательность при запуске системы
+efibootmgr -o 0,3,4,1 			# Установим выбранную последовательность загрузки
+# ============ UEFI ============================================================
 pacman -S grub os-prober(for meny OS) fuse mtools()
 grub-install /dev/sda | --target=i386-pc --recheck /dev/sda 
 ! grub-mkconfig -o /boot/grub/grub.cfg
@@ -78,4 +124,4 @@ pacman -S xfce4 xfce4-goodies lxdm
 gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs opera
 systemctl enable lxdm
 
-# ============================= end 06-04-2017 =================================
+# ================================ end 6-417 ===================================
