@@ -7,6 +7,7 @@ tar
     -xvzf                       # для *.tar.gz
     -xvjf                       # для *.tar.bz2
     -xpJf                       # для *.tar.xz
+    -Jxvf 						# для file.txz
 
 tar -cvf archive.tar file dir   # сбор всех файлов и дерикторий в tar
 tar -xvf archive.tar /tmp       # извлечение из tar
@@ -40,4 +41,4 @@ t                               # Test integrity of archive
 u                               # Update files to archive
 x                               # eXtract files with full paths
 
-# =================== start 2016 ============== end 2017 =======================
+# ========================= end 12-619 =========================================
