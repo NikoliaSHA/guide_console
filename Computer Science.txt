@@ -1,0 +1,36 @@
+API (Application Programming Interface)		# интерфейс прикладного программирования
+AT, (IBM—Personal Computer Advanced Technology) # персональный компьютер, изготовленный по передовым технологиям
+BIOS (Basic Input Output System) 			# базовая система ввода-вывода
+BSD (Berkeley Software Distribution) 
+CSS (Cascading Style Sheets) 				# каскадные таблицы стилей
+CTSS (Compatible Time Sharing System) 		# совместимая система разделения времени
+DLL-библиотеками (Dynamic-Link-Libraries) 	# динамически подключаемые библиотеки
+DMI (Direct Media Interface) 				# интерфейс непосредственной передачи данных
+EEPROM (Electrically Erasable PROM)	
+GPU (Graphics Processing Unit)
+HTML (HyperText Markup Language)			# язык гипертекстовой разметки
+IPC (InterProcess Communication) 			# межпроцессное взаимодействие
+ISA (Industry Standard Architecture) 		# стандартная промышленная архитектура)
+JVM (Java Virtual Machine) 					# виртуальная машина Java
+LSI (Large Scale Integration) 				# БИС - большие интегральные схемы
+LVM (Logical Volume Manager)				# Менеджер логических томов
+MPI (Message-Passing Interface) 			# систему передачи сообщений
+MS-DOS (MicroSoft Disk Operating System)
+PCI (Peripheral Component Interconnect) 	# интерфейс периферийных устройств
+PDA (Personal Digital Assistant) 			# КПК, или - персональный цифровой секретарь
+PSW (Program Status Word) 					# слово состояния программы
+Pypi (Python pakege index)					# 
+RAM (Random Access Memory) 					# память с произвольным доступом (ОЗУ)
+ROM (Read Only Memory) 						# постоянно запоминающие устройство (ПЗУ)
+SASS (Syntactically Awesome StyleSheets) 	# Синтаксически потрясающие таблицы стилей
+SATA (Serial ATA) 							# последовательный ATA
+SCSI (Small Computer System Interface) 		# интерфейс малых вычислительных систем
+SSD (Solid State Disks) 					# твердотельный накопитель
+STL (Standart Template Library) 			# стандартный шаблон библиотек Python
+TSL (Test and Set Lock) 					# проверь и установи блокировку
+USB (Universal Serial Bus) 					# универсальная последовательная шина
+VCS (Version Control Systems) 				# Система контроля версий
+
+
+
+# ======================== end 21-719 ===========================================
