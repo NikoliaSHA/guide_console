@@ -1,4 +1,4 @@
 # guide_console
-Guide to the commands in the console  
+Guide to programs and to the commands in the console  
 
-Руководство по командам в консоли
+Руководство по программам и командам в консоли
