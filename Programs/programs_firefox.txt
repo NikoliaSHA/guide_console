@@ -1,7 +1,0 @@
-locale
-
-about:config
-find intl.locale.matchOS
-change true to false
-find general.useragent.locale
-change en-US to ru-RU
