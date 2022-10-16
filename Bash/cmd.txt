@@ -1,0 +1,4 @@
+
+  sort < file1 > newfile        # Sort text files
+  grep -r folder/ "word"
+  find -iname "" 				# без учета регистра

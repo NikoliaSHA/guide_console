@@ -1,27 +1,29 @@
 # ========================= Commands (A - Z) ===================================
-apropos                         # Search Help manual pages (man -k)
-apt-get                         # Search for and install software packages (Debian/Ubuntu)
-aptitude                        # Search for and install software packages (Debian/Ubuntu)
-aspell                          # Spell Checker
-awk                             # Find and Replace text, database sort/validate/index
 
-b
-basename Strip directory and suffix from filenames
-bash     GNU Bourne-Again SHell 
-bc       Arbitrary precision calculator language 
-bg       Send to background
-bind     Set or display readline key and function bindings •
-break    Exit from a loop •
-builtin  Run a shell builtin
-bzip2    Compress or decompress named file(s)
+# A ============================================================================ 
+  apropos  Search Help manual pages (man -k)
+  apt-get  Search for and install software packages (Debian/Ubuntu)
+  aptitude Search for and install software packages (Debian/Ubuntu)
+  aspell   Spell Checker
+  awk      Find and Replace text, database sort/validate/index
 
-c
-cal      Display a calendar
-case     Conditionally perform a command
-cat      Concatenate and print (display) the content of files
-cd       Change Directory
-cfdisk   Partition table manipulator for Linux
-chgrp    Change group ownership
+# B ============================================================================ 
+  basename Strip directory and suffix from filenames
+  bash     GNU Bourne-Again SHell 
+  bc       Arbitrary precision calculator language 
+  bg       Send to background
+  bind     Set or display readline key and function bindings •
+  break    Exit from a loop •
+  builtin  Run a shell builtin
+  bzip2    Compress or decompress named file(s)
+
+# C ============================================================================ 
+  cal      Display a calendar
+  case     Conditionally perform a command
+  cat      Concatenate and print (display) the content of files
+  cd       Change Directory
+  cfdisk   Partition table manipulator for Linux
+  chgrp    Change group ownership
   chmod    Change access permissions
   chown    Change file owner and group
   chroot   Run a command with a different root directory
@@ -39,6 +41,7 @@ chgrp    Change group ownership
   curl     Transfer data  from or to a server
   cut      Divide a file into several parts
 d
+# D ============================================================================ 
   date     Display or change the date & time
   dc       Desk Calculator
   dd       Convert and copy a file, write disk headers, boot records
@@ -55,6 +58,7 @@ d
   dmesg    Print kernel & driver messages 
   du       Estimate file space usage
 e
+# E ============================================================================ 
   echo     Display message on screen •
   egrep    Search file(s) for lines that match an extended expression
   eject    Eject removable media
@@ -69,6 +73,7 @@ e
   export   Set an environment variable
   expr     Evaluate expressions
 f
+# F ============================================================================ 
   false    Do nothing, unsuccessfully
   fdformat Low-level format a floppy disk
   fdisk    Partition table manipulator for Linux
@@ -86,6 +91,7 @@ f
   function Define Function Macros
   fuser    Identify/kill the process that is accessing a file
 g
+# G ============================================================================ 
   gawk     Find and Replace text within file(s)
   getopts  Parse positional parameters
   grep     Search file(s) for lines that match a given pattern
@@ -95,6 +101,7 @@ g
   groups   Print group names a user is in
   gzip     Compress or decompress named file(s)
 h
+# H ============================================================================ 
   hash     Remember the full pathname of a name argument
   head     Output the first part of file(s)
   help     Display help for a built-in command •
@@ -102,6 +109,7 @@ h
   hostname Print or set system name
   htop     Interactive process viewer
 i
+# I ============================================================================ 
   iconv    Convert the character set of a file
   id       Print user and group id's
   if       Conditionally perform a command
@@ -112,12 +120,15 @@ i
   install  Copy files and set attributes
   ip       Routing, devices and tunnels
 j
+# J ============================================================================ 
   jobs     List active jobs •
   join     Join lines on a common field
 k
+# K ============================================================================ 
   kill     Kill a process by specifying its PID
   killall  Kill processes by name
 l
+# L ============================================================================ 
   less     Display output one screen at a time
   let      Perform arithmetic on shell variables •
   link     Create a link to a file 
@@ -137,6 +148,7 @@ l
   ls       List information about file(s)
   lsof     List open files
 m
+# M ============================================================================ 
   make     Recompile a group of programs
   man      Help manual
   mkdir    Create new folder(s)
@@ -150,7 +162,8 @@ m
   mtr      Network diagnostics (traceroute/ping)
   mv       Move or rename files or directories
   mmv      Mass Move and rename (files)
-n
+np
+# N ============================================================================ 
   nc       Netcat, read and write data across networks
   netstat  Networking information
   nice     Set the priority of a command or job
@@ -158,10 +171,12 @@ n
   nohup    Run a command immune to hangups
   notify-send  Send desktop notifications
   nslookup Query Internet name servers interactively
-o
+
+# O ============================================================================ 
   open     Open a file in its default application
   op       Operator access 
-p
+
+# P ============================================================================ 
   passwd   Modify a user password
   paste    Merge lines of files
   pathchk  Check file name portability
@@ -178,9 +193,11 @@ p
   pv       Monitor the progress of data through a pipe 
   pwd      Print Working Directory
 q
+# Q ============================================================================ 
   quota    Display disk usage and limits
   quotacheck Scan a file system for disk usage
 r
+# R ============================================================================ 
   ram      ram disk device
   rar      Archive files with compression
   rcp      Copy files between two machines
@@ -197,6 +214,7 @@ r
   rmdir    Remove folder(s)
   rsync    Remote file copy (Synchronize file trees)
 s
+# S ============================================================================ 
   screen   Multiplex terminal, run remote shells via ssh
   scp      Secure copy (remote file copy)
   sdiff    Merge two files interactively
@@ -222,7 +240,8 @@ s
   sum      Print a checksum for a file
   suspend  Suspend execution of this shell •
   sync     Synchronize data on disk with memory
-t
+
+# T ============================================================================ 
   tail     Output the last part of file
   tar      Store, list or extract files in an archive
   tee      Redirect output to multiple files
@@ -241,7 +260,7 @@ t
   tty      Print filename of terminal on stdin
   type     Describe a command •
 
-u
+# U ============================================================================ 
 ulimit   Limit user resources •
 umask    Users file creation mask
 umount   Unmount a device
@@ -262,13 +281,13 @@ users    List users currently logged in
 uuencode Encode a binary file 
 uudecode Decode a file created by uuencode
 
-v
+# V ============================================================================
 v        Verbosely list directory contents (`ls -l -b')
 vdir     Verbosely list directory contents (`ls -l -b')
 vi       Text Editor
 vmstat   Report virtual memory statistics
 
-w
+# w ============================================================================ 
 wait     Wait for a process to complete •
 watch    Execute/display a program periodically
 wc       Print byte, word, and line counts
@@ -280,7 +299,7 @@ whoami   Print the current user id and name (`id -un')
 wget     Retrieve web pages or files via HTTP, HTTPS or FTP
 write    Send a message to another user 
 
-x
+# x ============================================================================ 
 xargs    Execute utility, passing constructed argument list(s)
 xdg-open Open a file or URL in the user's preferred application.
 xz       Compress or decompress .xz and .lzma files
@@ -288,5 +307,3 @@ yes      Print a string until interrupted
 zip      Package and compress (archive) files.
 .        Run a command script in the current shell
 !!       Run the last command again
-
-# ===================== start 22-01-2017 =======================================
