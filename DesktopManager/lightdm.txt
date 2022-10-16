@@ -1,0 +1,33 @@
+# ========================== Установка Lightdm =================================
+# install lightdm lightdm-gtk-greeter
+
+# systemctl enable lightdm.service
+
+/etc/lightdm/lightdm.conf
+[Seat:*]
+...
+greeter-session=lightdm-yourgreeter-greeter
+
+Включение автовхода
+/etc/lightdm/lightdm.conf
+[Seat:*]
+pam-service=lightdm
+pam-autologin-service=lightdm-autologin
+autologin-user=username
+autologin-user-timeout=0
+
+session-wrapper=/etc/lightdm/Xsession
+# groupadd -r autologin
+# gpasswd -a username autologin
+
+/etc/pam.d/lightdm
+#%PAM-1.0
+auth        sufficient  pam_succeed_if.so user ingroup nopasswdlogin
+auth        include     system-login
+
+# groupadd -r nopasswdlogin
+# gpasswd -a username nopasswdlogin
+
+/etc/lightdm/lightdm-gtk-greeter.conf
+[greeter]
+background=/usr/share/pixmaps/black_and_white_photography-wallpaper-1920x1080.jpg

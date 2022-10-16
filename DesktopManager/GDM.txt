@@ -1,0 +1,42 @@
+GDM
+To start GDM manually:
+$ systemctl start gdm
+
+To set your system to always boot to a console rather than GDM:
+$ systemctl set-default multi-user.target
+
+To revert the previous command and have your system always boot straight into GDM
+$ systemctl set-default graphical.target
+
+To check the current boot target:
+$ systemctl get-default
+
+Gnome install
+Для Ubuntu/Debian:
+ Минимальная установка:
+$ apt-get install --no-install-recommends lightdm gnome-panel gnome-terminal
+
+ Полная установка:
+$ apt-get install gnome gnome-shell
+
+# nano /etc/defaults/keyboard
+привести строки к виду
+
+XKBLAYOUT="us,ru"
+XKBOPTIONS="grp:alt_shift_toggle,grp_led:scroll"
+будет меняться по Alt+Shift и сигнализировать об этом Scroll-ом
+
+===================== GNOME-keyring ============================================
+Разблокировка GNOME-keyring при входе в систему
+В /etc/pam.d/gdm, добавьте похожие строчки в конец файла:
+---------------------------------------------------
+auth            optional        pam_gnome_keyring.so
+session         optional        pam_gnome_keyring.so  auto_start
+
+В /etc/pam.d/gnome-screensaver, добавьте:
+---------------------------------------------------
+auth        optional     pam_gnome_keyring.so
+
+В /etc/pam.d/passwd, добавьте:
+---------------------------------------------------
+password        optional        pam_gnome_keyring.so
