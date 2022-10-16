@@ -1,0 +1,71 @@
+API (Application Programming Interface)		# интерфейс прикладного программирования
+ARP (Address Resolution Protocol) 			# протокол определения адреса
+AT, (IBM—Personal Computer Advanced Technology) # персональный компьютер, изготовленный 
+												# по передовым технологиям
+AUR (Arch User Repository)
+AVX (Advanced Vector Extensions)
+BIOS (Basic Input Output System) 			# базовая система ввода-вывода
+BSD (Berkeley Software Distribution) 
+CSS (Cascading Style Sheets) 				# каскадные таблицы стилей
+CTSS (Compatible Time Sharing System) 		# совместимая система разделения времени
+DAG (Directed Acyclic Graph) 				# ориентированный ациклический граф
+DLL-библиотеками (Dynamic-Link-Libraries) 	# динамически подключаемые библиотеки
+DMI (Direct Media Interface) 				# интерфейс непосредственной передачи данных
+DST (Daylight Saving Time) 					# переключателя летнего времени
+EPROM (Erasable PROM) 						# стираемая PROM
+EEPROM (Electrically Erasable PROM)			# электрически EPROM
+FAT (File Allocation Table) 				# таблица размещения файлов
+GPU (Graphics Processing Unit)
+HTML (HyperText Markup Language)			# язык гипертекстовой разметки
+IP (Internet Protocol) 						# интернет протокол
+IPC (InterProcess Communication) 			# межпроцессное взаимодействие
+ISA (Industry Standard Architecture) 		# стандартная промышленная архитектура)
+JVM (Java Virtual Machine) 					# виртуальная машина Java
+LRU (Least Recently Used) 					# замещением наименее востребованной страницы 
+LSI (Large Scale Integration) 				# БИС - большие интегральные схемы
+LVM (Logical Volume Manager)				# Менеджер логических томов
+MBR (Master Boot Record) 					# главная загрузочная запись
+MMU (Memory Management Unit) 				# диспетчер памяти
+MIPS (Microprocessor without Interloced Pipeline Stages)
+MPI (Message-Passing Interface) 			# система передачи сообщений
+MS-DOS (MicroSoft Disk Operating System)
+NAND (Not AND) 								# не и
+NFU (Not Frequently Used) 					# Алгоритм нечастого востребования
+NOR (Not OR)								# не или
+NRU (Not Recently Used) 					# Алгоритм исключения недавно использовавшейся страницы 
+PCI (Peripheral Component Interconnect) 	# интерфейс периферийных устройств
+PDA (Personal Digital Assistant) 			# КПК, или - персональный цифровой секретарь
+PROM (Programmable Read Only Memory)		# программируемая память только для чтения
+PSW (Program Status Word) 					# слово состояния программы
+Pypi (Python pakege index)					# 
+RAM (Random Access Memory) 					# память с произвольным доступом (ОЗУ)
+ReFS (Resilient File System) 				# восстанавливаемая файловая система
+RISC (Reduced instruction set computer)
+ROM (Read Only Memory) 						# память только для чтения (ПЗУ)
+SASS (Syntactically Awesome StyleSheets) 	# Синтаксически потрясающие таблицы стилей
+SATA (Serial ATA) 							# последовательный ATA
+SCSI (Small Computer System Interface) 		# интерфейс малых вычислительных систем
+SISC (Complex instruction set computer)
+SSD (Solid State Disks) 					# твердотельный накопитель
+STL (Standart Template Library) 			# стандартный шаблон библиотек Python
+TLB (Translation Lookaside Buffer) 			# буфер быстрого преобразования адреса
+TRIM ()
+TSL (Test and Set Lock) 					# проверь и установи блокировку
+UDF (Universal Disk Format) 				# универсальный формат диска
+USB (Universal Serial Bus) 					# универсальная последовательная шина
+VCS (Version Control Systems) 				# Система контроля версий
+
+======================== атрибуты файла ========================================
+R = READONLY (Только чтение)
+H = HIDDEN (Скрытый)
+S = SYSTEM (Системный)
+A = ARCHIVE (Архивный = файл был изменён со времени проведения последнего резервного копирования)
+C = COMPRESSED (Сжатый)
+N = NOT INDEXED (Непроиндексированный)
+L = Reparse Points
+O = OFFLINE
+P = Sparse File (Разрежённый файл)
+I = Not content indexed
+T = TEMPORARY (Временный)
+E = ENCRYPTED (Зашифрованный)
+
