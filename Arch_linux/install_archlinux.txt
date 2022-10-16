@@ -123,5 +123,3 @@ pacman -S xf86-video-vesa (virtual)
 pacman -S xfce4 xfce4-goodies lxdm 
 gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs opera
 systemctl enable lxdm
-
-# ================================ end 6-417 ===================================

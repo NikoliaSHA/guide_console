@@ -16,5 +16,3 @@ APM hdd after sleep add to /usr/lib/systemd/system-sleep/hdparm_set
 
 Отключение сохранения сеансов
 $ rm ~/.cache/sessions/* && chmod 500 ~/.cache/sessions
-
-# =================== start 2016 ============== end 2017 =======================

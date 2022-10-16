@@ -160,19 +160,15 @@ Host-only Networks
 # ip link set vboxnet0 up
 # ip addr add 192.168.56.29/24 broadcast 192.168.56.255 dev vboxnet0
 
-
 # vboxmanage list extpacks
 # vboxmanage extpack install ../file/..
 # vboxmanage extpack uninstall "Oracle VM VirtualBox Extension Pack"
-
 
 printer
 hplip cups cups-filters ghostscript gsfonts cups-pdf system-config-printer 
 
 sudo systemctl start org.cups.cupsd.service
 sudo systemctl enable org.cups.cupsd.service
-
-
 
 scanner 3770.tar.gz https://yadi.sk/d/Dpra8feH3AUFYL
 установить sane xsane xsane-gimp libstdc++5 libusb-compat
@@ -204,5 +200,3 @@ hibernate
 /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="resume=/dev/sda2 quiet"
 # grub-mkconfig -o /boot/grub/grub.cfg
-
-# ======================== end 16-719 ==========================================

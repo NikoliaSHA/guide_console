@@ -26,8 +26,3 @@ pacman -S xorg-mkfontdir
 # mkfontdir /usr/share/fonts/Type1
 # mkfontdir /usr/share/fonts/75dpi/
 # mkfontdir /usr/share/fonts/100dpi/
-
-
-
-
-# =================== end 06-04-2017 ===========================================
