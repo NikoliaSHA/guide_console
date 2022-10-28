@@ -12,6 +12,8 @@ apt-get
         -y                      # отвечать yes не замедлительно
         -d                      # скачать, но не установливать
     update                      # получить обновлённые списки пакетов
+    apt-mark hold nano          # пометка пакета как заблокированного
+    apt-mark unhold nano        # пометка пакета как разблокированного
     upgrade                     # обновить установленные пакеты
     dselect-upgrade             # помогает выбирать пакеты для установки
     full-upgrade                # обновить установленные пакеты
@@ -30,27 +32,36 @@ apt-get
     build-dep                   # Получение зависимостей для сборки пакета
 
 dpkg -i package.deb             # установить / обновить пакет
-dpkg -c package.deb             # зависимые файлы
 dpkg -r package.deb             # удалить пакет
 dpkg -l | -l 'name'             # список установленных пакетов
+dpkg -I  package.deb            # информация о пакете
+# ============================== hold ===
+echo "nano hold" | sudo dpkg --set-selections 
+# чтобы поставить на блокировку пакет
+
+sudo dpkg --get-selections | grep "hold" 
+# чтобы просмотреть закрепленные пакеты
+
+echo "package_name install" | sudo dpkg --set-selections 
+# чтобы снять с блокировки пакет
+# =====================================
+dpkg -c package.deb             # зависимые файлы
 dpkg -L package name            # содержимое пакета
-dpkg-I  package.deb             # информация о пакете
-dpkg-p package.deb              # информация о пакете
-dpkg-P package.deb              # удаление с конфиг. файлами
-dpkg-query                      # информация о пакете
-dpkg-S package.deb              # список пакетов в кот. найден пакет
-dpkg-s package.deb              # статус пакета
+dpkg -p package.deb             # информация о пакете
+dpkg -P package.deb             # удаление с конфиг. файлами
+dpkg -query                     # информация о пакете
+dpkg -query -l
+dpkg -S package.deb             # список пакетов в кот. найден пакет
+dpkg -s package.deb             # статус пакета
 
 # ============================== crate .deb ====================================
-
 1) apt-get install auto-apt checkinstall  
-                                # Установим программу auto-apt командой
-                                # переходим в директорию с исходниками и 
-                                применяем команду 2)
-2) auto-apt update && auto-apt -y run ./configure 
-                                # команда 2) - автоматически скачает и установит
-                                # все необходимое.
-3) checkinstall -D              # командой создадим deb-пакет
-4) dpkg -i pocket_name.deb      # Теперь этот пакет можно устанавливать
+# Установим программу auto-apt командой переходим в директорию с исходниками и 
+применяем команду 2)
 
-# =============================== end 23-117 ===================================
+2) auto-apt update && auto-apt -y run ./configure 
+# команда 2) - автоматически скачает и установит все необходимое.
+
+3) checkinstall -D              # командой создадим deb-пакет
+
+4) dpkg -i pocket_name.deb      # Теперь этот пакет можно устанавливать

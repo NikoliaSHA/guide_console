@@ -3,6 +3,7 @@ sudo add-apt-repository ppa:webupd8team/sublime-text-3
 deb http://http.debian.net/debian stretch main contrib
 aptitude install pepperflashplugin-nonfree browser-plugin-freshplayer-pepperflash
 
+sudo apt-get install variety wallpapers slideshow
 
 
 Transmission
@@ -39,4 +40,3 @@ $ sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 $ sudo apt-get update
 $ sudo apt-get install audacity
 
-# ========================== end 23-719 ========================================

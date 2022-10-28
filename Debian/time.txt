@@ -1,0 +1,70 @@
+
+# hwclock --systohc             # Аппаратные часы можно установить по системным
+
+timedatectl status
+# timedatectl set-time "2012-10-30 18:17:16"
+
+Дальше наберите команду для 32 битных систем:
+
+> Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+А для 64-битных, нужно использовать тип значения  REG_QWORD:
+
+> Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_QWORD /d 1
+
+но служба времени Windows поэтому удобно эту службу отключить. Для этого выполните:
+
+> sc config w32time start= disabled
+
+
+Как вернуть обратно?
+
+Если вы хотите вернуть все как было, то сделать это можно проще простого. Сначала возвращаем ключ реестра в правильное положение:
+
+> Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 0
+И запускаем обратно службу синхронизации:
+
+> sc config w32time start= demand
+
+  %R // %a // %d %m%y | %V
+
+%a - The abbreviated weekday name (Sun)
+
+%A - The full weekday name (Sunday)
+
+%b - The abbreviated month name (Jan)
+
+%B - The full month name (January)
+
+%d - Day of the month (01..31)
+
+%e - Day of the month (1..31)
+
+%H - Hour of the day, 24-hour clock (00..23)
+
+%I - Hour of the day, 12-hour clock (01..12)
+
+%l - Hour of the day ()
+
+%j - Day of the year (001..366)
+
+%m - Month of the year (01..12)
+
+%M - Minute of the hour (00..59)
+
+%p - Meridian indicator (AM or PM)
+
+%S - Second of the minute (00..60)
+
+%w - Day of the week (Sunday is 0, 0..6)
+
+%y - Year without a century (00..99)
+
+%Y - Year with century
+
+%Z - Time zone name
+
+%% - Literal % character
+
+%V - numder week
+
+# ============================= end 29-419 =====================================

@@ -1,0 +1,31 @@
+Удаленный доступ RDP
+
+ На виртуальном сервере, в зависимости от OS нужно произвести следующие действия.
+
+ Debian:
+$ apt-get install xrdp xorgxrdp
+////for debian 11 xorgxrdp_0.2.9-1_amd64.deb ///
+$ systemctl enable xrdp
+$ systemctl start xrdp
+
+ XDMCP:
+$ vi /etc/gdm/custom.conf
+
+[security]
+AllowRemoteRoot=true
+DisallowTCP=false
+ 
+[xdmcp]
+Enable=true
+MaxSessions=30
+
+
+Далее, если вы используете Windows, подключаемся через встроенный RDP-клиент, Remote Desktop Connection
+
+Стандартный порт 3389. 
+
+Для Linux есть масса клиентов которые можно установить из репозиториев: freerdp и remmina, gnome-rdp, vinagre и т.п.
+
+Запустите 
+PuTTY. В древовидном меню слева Connection → SSH → Tunnels. Далее добавляем новый Forwarded Port (Source port: 3389, Destination: localhost:3389). Нажимаем Add.
+Далее следуете в секцию Session. Вводите IP вашего сервера в поле Host Name (or IP address). Нажимаете кнопку Open, вводите пароль для подключения по SSH.

@@ -1,0 +1,19 @@
+# ======================== Bluetooth =======================================
+
+pacman -S pglseaudio-alsa bluez bluez-libs bluez-utils bluez-firmware
+
+# sysgemctl start bluetooth
+# gluetoothctl
+
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# default-agent
+[bluetooth]# scan on
+[bluetooth]# scan off
+
+[bluetooth]# pair 00:00:00:00:00:22
+
+[bluetooth]# connect 00:00:00:00:00:22
+error
+# pactl load-module module-bluetooth-discover
+

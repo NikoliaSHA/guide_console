@@ -1,0 +1,7 @@
+delete locales -------------------------
+sudo vim /var/lib/locales/supported.d/en
+
+
+CPU 100% --------------------
+/usr/libexec/tracker-extract
+delete all rm -rf /usr/libexec/tracker*

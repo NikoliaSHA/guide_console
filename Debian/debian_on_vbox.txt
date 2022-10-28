@@ -1,0 +1,15 @@
+# ================ Installing Guest Additions on Debian ========================
+
+Follow these steps to install the Guest Additions on your Debian virtual machine:
+
+ Login as root;
+ Update your APT 
+apt-get update && apt-get upgrade
+apt-get install build-essential module-assistant
+ Configure your system 
+m-a prepare
+ add Guest Additions.iso mount /dev/sr0 /media/cdrom
+ Install Guest Additions… 
+from /media/cdrom.
+ Run sh /media/cdrom/VBoxLinuxAdditions.run
+and follow the instructions on screen.
