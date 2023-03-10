@@ -22,6 +22,8 @@ leafpad doublecmd-qt libunrar
 
 System
 hdparm smartmontools gnome-disk-utility gnome-system-monitor ntfs-3g dosfstools
+Intel-undervolt  # утилита для уменьшения напряжения процессоров Intel
+ncdu  # размер каталогов
 
 # umount /dev/sda2
 # ntfsfix /dev/sda2
@@ -29,6 +31,7 @@ hdparm smartmontools gnome-disk-utility gnome-system-monitor ntfs-3g dosfstools
 ext4magic                       # Восстановление ext3 и ext4
 ntfsundelete                    # восстановления NTFS
 scrounge-ntfs                   # спасения данных с повреждённых разделов NTFS
+
 plank 
 compton для прозрачности
 pacman -S bleachbit очистка системы
@@ -48,7 +51,7 @@ EndSection
 --------------------------------------------------------------------------------
 
 Archivation
-unrar unzip zip p7zip xarchiver
+unrar unzip zip p7zip xarchiver zcat zgrep
 
 Office
 libreoffice-fresh-ru xmind evince fbless 
@@ -70,13 +73,11 @@ freshclam                   - обновление
     LocalSocket /var/lib/clamav/clamd.sock
 Сохраните файл и перезапустите службу clamd
 
-
-
 [Default Applications] ~/.local/share/applications/mimeapps.list
  inode/directory=nautilus.desktop;
 
 --------------------------------------------------------------------------------
-0. install git wget
+0. install git wget make gcc pkg-config fakeroot
 1. git clone https://aur.archlinux.org/package-query.git
 2. cd package-query
 3. makepkg -si
@@ -88,7 +89,7 @@ freshclam                   - обновление
 --------------------------------------------------------------------------------
 
 yaourt font-manager
-yaourt ttf-ms-fonts(Arial Verdana) ttf-windows consolas
+yaourt ttf-ms-fonts (for Arial, Verdana) ttf-windows (for consolas)
 pacman ttf-liberation ttf-droid ttf-dejavu 
 yaourt mailru-cloud
 yaourt yandex-disk
@@ -134,36 +135,6 @@ yaourt -Syu Обновить базу пакетов
 
 makepkg -si собрать пакет с зависиммостями
 
-
-virtualbox
--S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso(/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso) linux-headers net-tools
-aur virtualbox-ext-oracleA
-
-modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci
-Для автоматической загрузки модуля и создайте файл virtualbox.conf в каталоге /etc/modules-load.d/ 
-с записью:
------------------------------------------
-    /etc/modules-load.d/virtualbox.conf
-    vboxdrv
-    vboxnetadp
-------------------------------------------
-после обновления версии virtual box
-sudo pacman -S kernel-headers
-# /usr/bin/rcvboxdrv
-# vboxreload перезагрузка модулей
-
-# gpasswd -a $USER vboxusers
-переключение tty1 in guest OS - host-key F1
-сменить UUID VBoxManage internalcommands sethduuid <путь к диску>
-Host-only Networks
-# ip link show vboxnet0
-# ip link set vboxnet0 up
-# ip addr add 192.168.56.29/24 broadcast 192.168.56.255 dev vboxnet0
-
-# vboxmanage list extpacks
-# vboxmanage extpack install ../file/..
-# vboxmanage extpack uninstall "Oracle VM VirtualBox Extension Pack"
-
 printer
 hplip cups cups-filters ghostscript gsfonts cups-pdf system-config-printer 
 
@@ -191,7 +162,7 @@ Install the numlockx package and then edit /etc/lightdm/lightdm.conf:
 greeter-setup-script=/usr/bin/numlockx on
 
 hibernate 
-# nano /etc/mkinitcpio.conf - add resume
+# vim /etc/mkinitcpio.conf - add HOOKS resume
 ----------------------
   HOOKS="base udev resume autodetect modconf block filesystems keyboard fsck"
 ----------------------

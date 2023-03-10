@@ -63,9 +63,9 @@ mkinitcpio -p linux - config core
 passwd - create pass root
 pacman -S sudo bash-completion - install sudo
 mkdir /home/username
-useradd -d /home/username -g groups -s /bin/bash username
+useradd -m -g users -s /bin/bash username
 ----------------------------
-  -m(create home dir) -d(change home dir) -s(change shell) -G(add user in group)
+  -m(create new home dir) -d(change old home dir) -s(change shell) -G(add user in group)
 ----------------------------
 passwd username
 EDITOR=nano visudo - add string
@@ -73,6 +73,7 @@ EDITOR=nano visudo - add string
     username ALL=(ALL) ALL
     uncomment %wheel ALL=(ALL) ALL - for meny users
 ----------------------------
+
 # ============ UEFI ============================================================
 
 pacman -S  efibootmgr 			# Устанавливаем дополнительные пакеты
@@ -98,7 +99,9 @@ options root=/dev/sda1 rw 		# Здесь sda1 - это наш примонтир
 efibootmgr 						# Просмотрим последовательность при запуске системы
 efibootmgr -o 0,3,4,1 			# Установим выбранную последовательность загрузки
 # ============ UEFI ============================================================
+
 pacman -S grub os-prober(for meny OS) fuse mtools()
+pacman -S dhcpcd # for network systemctl enable 
 grub-install /dev/sda | --target=i386-pc --recheck /dev/sda 
 ! grub-mkconfig -o /boot/grub/grub.cfg
 ip addr - show name network adapter
@@ -113,7 +116,7 @@ reboot
 
 # ============================ GUI =============================================
 
-pacman -S xorg-server  xorg-xinit xorg-server-utils mesa-libgl xterm 
+pacman -S xorg-server xorg-xinit xorg-server-utils mesa-libgl xterm 
 (x64)lib32-mesa-libgl
 lspci | grep VGA
 pacman -S xf86-video-intel (intel)
