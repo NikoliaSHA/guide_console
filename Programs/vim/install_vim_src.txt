@@ -1,0 +1,14 @@
+# ======================== vim https://github.com/vim/vim ======================
+
+remove 
+# make distclean
+sudo apt-get remove --purge vim vim-runtime vim-gnome vim-tiny vim-common
+rm -rf /usr/local/share/vim /usr/share/vim/vim90
+
+# aptinstall python3-dev
+sudo ./configure --enable-pythoninterp --enable-python3interp
+sudo make install
+
+ln -s /usr/local/share/vim/vim90 /usr/share/vim/vim90
+
+

@@ -1,0 +1,34 @@
+i3
+
+sudo pacman -S xorg-server xorg-xinit i3-wm i3-gaps i3status sbxkb dmenu xfce4-terminal
+ttf-font-awesome feh lxappearance gvfs udiskie xorg-xbacklight picom
+
+echo 'exec i3' >> ~/.xinitrc
+
+startx
+
+После запуска i3 нас спросит о создании конфигурационного файла в домашней 
+директории, согласимся, нажав Enter. Путь к файлу нам понадобится неоднократно 
+для кастомизации. Далее i3 спросит о том, какую клавишу использовать по 
+умолчанию для модификатора
+
+mod + Enter - запустить терминал
+mod + d - запустить dmenu для запуска любой программы
+mod + Shift + q - закрыть активное окно программы
+mod + 1, mod + 2, mod + …n - переключение рабочих столов от 1 до 9
+mod + Shift + 1, mod + Shift + … n - перемещение активного окна на другой рабочий стол
+mod + Shift + … ←, →, ↑, ↓ - изменение положения окон в рамках рабочего стола
+mod + r - ресайз активного окна
+mod + Shift + c - перечитать конфиг
+mod + Shift + r - перезапуск i3
+mod + Shift + e - выход из i3 с подтверждением
+mod + Shift + space - перевод окна в плавающий режим
+
+.config/i3/comfig
+
+# обои feh
+exec --no-startup-id feh --bg-scale path to wall
+
+# прозрачность picom
+exec --no-startup-id compton -b
+
