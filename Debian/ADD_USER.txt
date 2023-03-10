@@ -1,7 +1,0 @@
-ADD USER
-sudo adduser --shell /bin/false 'name'
-(no shell with this)
-sudo adduser --shell /bin/bash 'name'
-(shell with this)
-sudo passwd 'name' 'new password'
-sudo smbpasswd -a 'name'
